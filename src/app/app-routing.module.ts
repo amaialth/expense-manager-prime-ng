@@ -8,13 +8,13 @@ import { VerifyEmailComponent } from './auth/verify-email/verify-email.component
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent, data: { animation: 'LoginPage' } },
-  { path: 'register-user', component: SignUpComponent,data: { animation: 'RegisterPage' } },
+  { path: 'register-user', component: SignUpComponent, data: { animation: 'RegisterPage' } },
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
     //AuthGard
   },
-  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent, data: { animation: 'ForgotPasswordPage' } },
   { path: 'verify-email-address', component: VerifyEmailComponent }
 ];
 
