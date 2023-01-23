@@ -7,10 +7,17 @@ import { AuthService } from 'src/shared/services/auth.service';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-
+  username: string="";
+  password:string="";
+  rememberUser: boolean = false;
+  loading: boolean = false;
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
+  }
+
+  login(){
+    this.loading = true;
   }
 
 }

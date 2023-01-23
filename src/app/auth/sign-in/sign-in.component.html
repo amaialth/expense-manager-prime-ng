@@ -1,1 +1,39 @@
-<p>sign-in works!</p>
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div #loginForm class="d-flex justify-content-center">
+                <p-card>
+                    <h4>Welcome Back</h4>
+                    <p-divider></p-divider>
+                    <div #userm class="pt-4">
+                        <h6>E-Mail/Phone</h6>
+                        <input type="text" pInputText [(ngModel)]="username" style="width:100%">
+                    </div>
+                    <div #passwd class="pt-2">
+                        <h6>Password</h6>
+                        <p-password [(ngModel)]="password" [toggleMask]="true" [feedback]="false"></p-password>
+                    </div>
+                    <div #remember class="pt-2">
+                        <p-checkbox [(ngModel)]="rememberUser" [binary]="true" inputId="rememberme"></p-checkbox>
+                        <label for="rememberme" class="ps-2">Remember Me</label>
+                    </div>
+                    <div #loginBtn class="pt-4 d-flex justify-content-center">
+                        <p-button label="Login" icon="pi pi-caret-right" iconPos="right" [loading]="loading" (onClick)="login()" styleClass="p-button-rounded"></p-button>
+                        <button pButton pRipple type="button" icon="pi pi-google" class="p-button-rounded ms-2"></button>
+                        <button pButton pRipple type="button" icon="pi pi-facebook" class="p-button-rounded ms-2"></button>
+                    </div>
+                    <div #signup class="pt-2">
+                        New user, <p-button label="click here" routerLink="/register-user" styleClass="p-button-link p-0"></p-button> to register.
+                    </div>
+                    <div #forgotPassword class="pt-2">
+                        <p-button label="Forgot your credentials?" styleClass="p-button-link p-0"></p-button>
+                    </div>
+                </p-card>
+            </div>
+        </div>
+        <div class="d-none d-md-block col-md-6 col-lg-6 col-xl-6 back-img">
+        </div>
+
+    </div>
+
+</div>

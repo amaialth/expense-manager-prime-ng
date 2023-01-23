@@ -1,1 +1,65 @@
-<p>sign-up works!</p>
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="d-none d-md-block col-md-6 col-lg-6 col-xl-6 back-img">
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div #loginForm class="d-flex justify-content-center">
+                <p-card>
+                    <h4>Register</h4>
+                    <p-divider></p-divider>
+                    <div #loginBtn class="pt-4 d-flex justify-content-center align-items-center">
+                        <h6>Sign up with</h6>
+                        <button pButton pRipple type="button" icon="pi pi-google"
+                            class="p-button-rounded ms-2"></button>
+                        <button pButton pRipple type="button" icon="pi pi-facebook"
+                            class="p-button-rounded ms-2"></button>
+                    </div>
+                    <p-divider align="center">
+                            <b>OR</b>
+                    </p-divider>
+                    <div class="row">
+                        <div #fname class="pt-2 col">
+                            <h6>First Name</h6>
+                            <input type="text" pInputText [(ngModel)]="firstname" style="width:100%">
+                        </div>
+                        <div #lname class="pt-2 col">
+                            <h6>Last Name</h6>
+                            <input type="text" pInputText [(ngModel)]="lastname" style="width:100%">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div #fname class="pt-2 col">
+                            <h6>E-mail</h6>
+                            <input type="text" pInputText [(ngModel)]="email" style="width:100%">
+                        </div>
+                        <div #lname class="pt-2 col">
+                            <h6>Phone</h6>
+                            <input type="text" pInputText [(ngModel)]="phone" style="width:100%">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div #fname class="pt-2 col">
+                            <h6>Password</h6>
+                            <input type="text" pInputText [(ngModel)]="email" style="width:100%">
+                        </div>
+                        <div #lname class="pt-2 col">
+                            <h6>Confirm Password</h6>
+                            <input type="text" pInputText [(ngModel)]="phone" style="width:100%">
+                        </div>
+                    </div>
+                    <div #loginBtn class="pt-4 d-flex justify-content-center">
+                        <p-button label="Sign Up" icon="pi pi-caret-right" iconPos="right" [loading]="loading"
+                            (click)="signUp()" styleClass="p-button-rounded"></p-button>
+                    </div>
+                    <div #signup class="pt-2">
+                        Already have an account, <p-button label="click here" routerLink="/sign-in"
+                            styleClass="p-button-link p-0"></p-button> to login.
+                    </div>
+                </p-card>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

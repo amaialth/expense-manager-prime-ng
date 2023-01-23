@@ -7,8 +7,8 @@ import { VerifyEmailComponent } from './auth/verify-email/verify-email.component
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
-  { path: 'sign-in', component: SignInComponent },
-  { path: 'register-user', component: SignUpComponent },
+  { path: 'sign-in', component: SignInComponent, data: { animation: 'LoginPage' } },
+  { path: 'register-user', component: SignUpComponent,data: { animation: 'RegisterPage' } },
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
