@@ -3,43 +3,60 @@
         <div class="d-none d-md-block col-md-6 col-lg-6 col-xl-6 back-img">
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div #loginForm class="d-flex justify-content-center">
+            <div #regForm [formGroup]="registerForm" class="d-flex justify-content-center">
                 <p-card>
                     <h4>Register</h4>
                     <p-divider></p-divider>
+
                     <div class="row">
                         <div #fname class="pt-2 col">
                             <h6>First Name</h6>
-                            <input type="text" pInputText [(ngModel)]="firstname" style="width:100%">
+                            <input type="text" pInputText formControlName="firstName" style="width:100%">
                         </div>
                         <div #lname class="pt-2 col">
                             <h6>Last Name</h6>
-                            <input type="text" pInputText [(ngModel)]="lastname" style="width:100%">
+                            <input type="text" pInputText formControlName="lastName" style="width:100%">
                         </div>
                     </div>
                     <div class="row">
-                        <div #fname class="pt-2 col">
+                        <div #eMail class="pt-2 col">
                             <h6>E-mail</h6>
-                            <input type="text" pInputText [(ngModel)]="email" style="width:100%">
-                        </div>
-                        <div #lname class="pt-2 col">
-                            <h6>Phone</h6>
-                            <input type="text" pInputText [(ngModel)]="phone" style="width:100%">
+                            <span class="p-input-icon-right" style="width:100%">
+                                <i class="pi pi-spin pi-spinner" *ngIf="verifyEmailLoading"></i>
+                                <input type="text" pInputText formControlName="email" style="width:100%"
+                                    (blur)="emailExist()">
+                            </span>
                         </div>
                     </div>
-                    <div class="row">
-                        <div #fname class="pt-2 col">
+                    <div>
+                        <small id="username2-help" *ngIf="registerForm.controls['email'].hasError('emailExist')" class="p-error block">Email already exist.</small>
+                    </div>
+                    
+                    <div class="row" formGroupName="passwords">
+                        <div #pass class="pt-2 col">
                             <h6>Password</h6>
-                            <input type="text" pInputText [(ngModel)]="email" style="width:100%">
+                            <p-password formControlName="password" [toggleMask]="true" [feedback]="true"
+                                [inputStyle]="{'width':'100%'}" [style]="{'width':'100%'}"
+                                styleClass="w-full p-input-icon-right"></p-password>
                         </div>
-                        <div #lname class="pt-2 col">
+                        <div #confPass class="pt-2 col">
                             <h6>Confirm Password</h6>
-                            <input type="text" pInputText [(ngModel)]="phone" style="width:100%">
+                            <p-password formControlName="confirmPassword" [toggleMask]="true" [feedback]="false"
+                                [inputStyle]="{'width':'100%'}" [style]="{'width':'100%'}"
+                                styleClass="w-full p-input-icon-right"></p-password>
                         </div>
+                    </div>
+                    <div *ngIf="registerForm.controls['passwords'].hasError('min')">
+                        <small id="username2-help" class="p-error block">Password should be atleast 6 charectors in
+                            length</small>
+                    </div>
+                    <div *ngIf="registerForm.controls['passwords'].hasError('passwordMismatch')" class="text-center">
+                        <small id="username2-help" class="p-error block">Passwords does not match</small>
                     </div>
                     <div #loginBtn class="pt-4 d-flex justify-content-center">
                         <p-button label="Sign Up" icon="pi pi-caret-right" iconPos="right" [loading]="loading"
-                            (click)="signUp()" styleClass="p-button-rounded"></p-button>
+                            (click)="signUp()" styleClass="p-button-rounded" [disabled]="!registerForm.valid">
+                        </p-button>
                     </div>
                     <div #signup class="pt-2">
                         Already have an account, <p-button label="click here" routerLink="/sign-in"

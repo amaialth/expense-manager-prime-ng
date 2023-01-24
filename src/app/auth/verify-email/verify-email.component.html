@@ -1,1 +1,28 @@
-<p>verify-email works!</p>
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="d-none d-md-block col-md-6 col-lg-6 col-xl-6 back-img">
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <div #loginForm class="d-flex justify-content-center">
+                <p-card>
+                    <h4 style="text-align: center;">Verify your email</h4>
+                    <h6>You will need to verify your email to complete regristration</h6>
+                    <p-divider></p-divider>
+                    <div class="d-flex justify-content-center">
+                        <i class="pi pi-envelope" style="font-size: 6rem"></i>
+                    </div>
+                    <p class="text-center pt-4">
+                        An email has been sent to {{email}} with a link to verify your account. if you have not received the email after a few minutes, please check your spam folder.
+                    </p>
+                    <div #loginBtn class="pt-4 d-flex justify-content-center">
+                        <p-button label="Resend Email" icon="pi pi-envelope" iconPos="left" [loading]="loading"
+                            (onClick)="resendEmail()" styleClass="p-button-rounded"></p-button>
+                    </div>
+                </p-card>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

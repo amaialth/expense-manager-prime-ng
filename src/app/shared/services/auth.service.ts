@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from '../services/user';
+import { User } from './user';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
@@ -44,17 +44,21 @@ export class AuthService {
         });
       })
       .catch((error) => {
-        window.alert(error.message);
+        throw error;
       });
   }
   // Sign up with email/password
-  signUp(email: string, password: string) {
+  signUp(email: string, password: string, user: User) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
+      .then((result:any) => {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
         this.sendVerificationMail();
+        console.log(user);
+        result.user.firstName=user.firstName;
+        result.user.lastName=user.lastName;
+        console.log(result.user);
         this.setUserData(result.user);
       })
       .catch((error) => {
@@ -113,7 +117,8 @@ export class AuthService {
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      firstName: user.firstName,
+      lastName: user.lastName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
     };
@@ -128,4 +133,10 @@ export class AuthService {
       this.router.navigate(['sign-in']);
     });
   }
+
+  async isEmailAlreadyExist(email: string){
+    var methods = await this.afAuth.fetchSignInMethodsForEmail(email);
+    return methods.includes('password');
+  }
+
 }

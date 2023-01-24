@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/shared/services/auth.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-verify-email',
@@ -7,10 +7,13 @@ import { AuthService } from 'src/shared/services/auth.service';
   styleUrls: ['./verify-email.component.scss']
 })
 export class VerifyEmailComponent implements OnInit {
-
+  loading: boolean = false;
+  email: string = "";
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
+  resendEmail(){
 
+  }
 }

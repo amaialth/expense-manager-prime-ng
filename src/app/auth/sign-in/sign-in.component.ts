@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/shared/services/auth.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -7,17 +9,25 @@ import { AuthService } from 'src/shared/services/auth.service';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-  username: string="";
-  password:string="";
-  rememberUser: boolean = false;
   loading: boolean = false;
-  constructor(public authService: AuthService) { }
+  errorMsg: string="";
+  loginForm = this.fb.group({
+    username: ["", [Validators.required, Validators.email]],
+    password: ["", [Validators.required]],
+    rememberme: [false]
+  });
+  constructor(public authService: AuthService, private fb: FormBuilder, public router: Router) { }
 
   ngOnInit(): void {
   }
 
-  login(){
+  login() {
     this.loading = true;
+    this.authService.signIn(this.loginForm.value.username ? this.loginForm.value.username : "", this.loginForm.value.password ? this.loginForm.value.password : "").catch(e=>{
+      console.log(e);
+      this.errorMsg = "Username/Password is wrong. Please try again.";
+      this.loading = false;
+      this.loginForm.reset();
+    });
   }
-
 }
