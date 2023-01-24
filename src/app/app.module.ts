@@ -14,6 +14,7 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './auth/verify-email/verify-email.component';
 import { AuthService } from 'src/shared/services/auth.service';
+import { SharedModule } from 'src/shared/shared.module';
 // Auth service
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AuthService } from 'src/shared/services/auth.service';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    SharedModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

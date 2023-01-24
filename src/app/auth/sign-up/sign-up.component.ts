@@ -7,10 +7,12 @@ import { AuthService } from 'src/shared/services/auth.service';
   styleUrls: ['./sign-up.component.scss']
 })
 export class SignUpComponent implements OnInit {
-
+  loading: boolean = false;
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
   }
-
+  signup(){
+    this.loading = true;
+  }
 }

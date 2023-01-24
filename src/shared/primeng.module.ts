@@ -20,6 +20,8 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { ChipsModule } from 'primeng/chips';
 import {BadgeModule} from 'primeng/badge';
 import {CheckboxModule} from 'primeng/checkbox';
+import {DividerModule} from 'primeng/divider';
+import {PasswordModule} from 'primeng/password';
 @NgModule({
     imports: [
         TableModule,
@@ -42,7 +44,9 @@ import {CheckboxModule} from 'primeng/checkbox';
         TabMenuModule,
         ChipsModule,
         BadgeModule,
-        CheckboxModule
+        CheckboxModule,
+        DividerModule,
+        PasswordModule
     ],
     exports: [
 
@@ -66,7 +70,9 @@ import {CheckboxModule} from 'primeng/checkbox';
         TabMenuModule,
         ChipsModule,
         BadgeModule,
-        CheckboxModule
+        CheckboxModule,
+        DividerModule,
+        PasswordModule
     ]
 })
 
