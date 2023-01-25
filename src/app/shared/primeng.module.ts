@@ -23,6 +23,9 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {PasswordModule} from 'primeng/password';
 import {ImageModule} from 'primeng/image';
 import {DividerModule} from 'primeng/divider';
+import {ChartModule} from 'primeng/chart';
+import {SidebarModule} from 'primeng/sidebar';
+import {ToolbarModule} from 'primeng/toolbar';
 @NgModule({
     imports: [
         TableModule,
@@ -48,7 +51,10 @@ import {DividerModule} from 'primeng/divider';
         CheckboxModule,
         PasswordModule,
         ImageModule,
-        DividerModule
+        DividerModule,
+        ChartModule,
+        SidebarModule,
+        ToolbarModule
     ],
     exports: [
 
@@ -75,7 +81,10 @@ import {DividerModule} from 'primeng/divider';
         CheckboxModule,
         PasswordModule,
         ImageModule,
-        DividerModule
+        DividerModule,
+        ChartModule,
+        SidebarModule,
+        ToolbarModule
     ]
 })
 
