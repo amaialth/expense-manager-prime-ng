@@ -1,27 +1,155 @@
-<p-toolbar>
-    <div class="p-toolbar-group-start">
-        <p-button label="New" icon="pi pi-plus" class="mr-2"></p-button>
-        <p-button label="Upload" icon="pi pi-upload" styleClass="p-button-success"></p-button>
+<div class="container-fluid">
+    <p-toolbar styleClass="p-1 bg-light sticky-top">
+        <div class="p-toolbar-group-start">
 
-        <i class="p-toolbar-separator pi pi-bars mr-2" style="vertical-align: middle"></i>
+        </div>
 
-       
-    </div>
+        <div class="p-toolbar-group-center">
+            <h2>Prime Expen<i class="pi pi-spin pi-dollar" style="font-size: 2rem;color: #FCE623;text-shadow: 2px 2px #FF0000;"></i>e Tracker</h2>
+        </div>
 
-    <div class="p-toolbar-group-end">
-        <p-button icon="pi pi-search" class="mr-2"></p-button>
-        <p-button icon="pi pi-calendar" styleClass="p-button-success mr-2"></p-button>
-        <p-button icon="pi pi-times" styleClass="p-button-danger"></p-button>
-    </div>
-</p-toolbar>
-<p-sidebar [(visible)]="addIncome" position="right" [modal]="true" appendTo="body">
-    <div>
-        Income
-    </div>
-</p-sidebar>
-<p-sidebar [(visible)]="addExpense" position="left" [modal]="true" appendTo="body">
+        <div class="p-toolbar-group-end">
+            <p-avatar icon="pi pi-user" styleClass="me-4" style="cursor: pointer;" size="large" shape="circle" (click)="menu.toggle($event)"></p-avatar>
+            <p-menu #menu [popup]="true" [model]="items"></p-menu>
+        </div>
+    </p-toolbar>
 
-    <div>
-        Expense
+    <div class="row p-2">
+        <div class="col-sm-12 col-md-4">
+            <div class="card shadow-lg mb-4">
+                <h6 class="ps-4 pt-4">Add/Update</h6>
+                <p-divider></p-divider>
+                <div class="d-flex flex-column align-items-center">
+                    <p-selectButton [options]="stateOptions" [(ngModel)]="value1" class="p-2" optionLabel="label"
+                        optionValue="value">
+                    </p-selectButton>
+                    <span class="p-input-icon-left px-4 py-2 w-100">
+                        <i class="pi pi-th-large ps-4"></i>
+                        <input type="text" pInputText placeholder="Category" class="w-100" />
+                    </span>
+                    <span class="p-input-icon-left px-4 py-2 w-100">
+                        <i class="pi pi-file-edit ps-4"></i>
+                        <textarea rows="2" pInputTextarea class="w-100"></textarea>
+                    </span>
+                    <span class="p-input-icon-left  px-4 py-2">
+                        <i class="pi pi-calendar ps-4"></i>
+                        <p-calendar [(ngModel)]="date2" dateFormat="mm-dd-yy" class="w-100" inputId="dateformat">
+                        </p-calendar>
+                    </span>
+                    <div #loginBtn class="py-4 d-flex justify-content-center">
+                        <p-button pRipple label="ADD" icon="pi pi-plus" iconPos="right"
+                            styleClass="p-button-rounded me-2"
+                            [style]="{'background': 'linear-gradient(150deg, #46A1E6, #E393FE,#FC9472 100%)', 'border-radius':'20px'}">
+                        </p-button>
+                        <button pButton pRipple type="button" icon="pi pi-times" label="Clear"
+                            class="p-button-rounded p-button-danger p-button-outlined"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card" class="text-light shadow-lg p-4 mb-2 bg-body"
+                [style]="{'background': 'linear-gradient(150deg, #46A1E6, #E393FE,#FC9472 100%)', 'border-radius':'20px'}">
+                <h6>Expense by Category</h6>
+                <p-chart type="doughnut" [data]="data" [options]="chartOptions"></p-chart>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="col ">
+                <p-card styleClass="text-light shadow-lg p-3 mb-2 bg-body"
+                    [style]="{'background': 'linear-gradient(150deg, #46A1E6, #E393FE,#FC9472 100%)', 'border-radius':'20px'}">
+                    <ng-template pTemplate="header">
+                        <h6 class="text-center pt-4">
+                            Total Balance
+                        </h6>
+                    </ng-template>
+                    <h1 class="text-center p-0">
+                        $5,0000
+                    </h1>
+                    <ng-template pTemplate="footer">
+                        <div class="d-flex justify-content-between">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <i class="pi pi-arrow-circle-down" style="font-size: 2rem;  color:#00FF3F;"></i>
+                                </div>
+                                <div class="col p-0">
+                                    <h6>Income</h6>
+                                    <span>
+                                        <h4>
+                                            $40000
+                                        </h4>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center">
+                                <div class="col p-0">
+                                    <i class="pi pi-arrow-circle-up" style="font-size: 2rem; color: #FF3200;"></i>
+                                </div>
+                                <div class="col">
+                                    <h6>Expense</h6>
+                                    <span>
+                                        <h4>
+                                            $40000
+                                        </h4>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </ng-template>
+                </p-card>
+            </div>
+            <div class="card" class="text-light shadow-lg p-4 mb-2 bg-body"
+                [style]="{'background': 'linear-gradient(150deg, #46A1E6, #E393FE,#FC9472 100%)', 'border-radius':'20px'}">
+                <h6>Expense Trend</h6>
+                <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+            </div>
+            <div class="card" class="text-light shadow-lg p-4 mb-2 bg-body"
+                [style]="{'background': 'linear-gradient(150deg, #46A1E6, #E393FE,#FC9472 100%)', 'border-radius':'20px'}">
+                <h6>Income Trend</h6>
+                <p-chart type="bar" [data]="incomeData" [options]="incomeOptions"></p-chart>
+            </div>
+
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="card">
+                <h6 class="ps-4 pt-4 ">Transactions</h6>
+                <p-divider></p-divider>
+                <p-virtualScroller [value]="transactions" scrollHeight="100vh" [itemSize]="100">
+                    <ng-template let-transaction pTemplate="item">
+                        <p-card styleClass="shadow-lg p-1 m-4 rounded-4 border border-primary" class="transaction-card">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center ">
+                                    <div class="p-2 rounded-circle shadow-lg text-light" style="background:linear-gradient(150deg, #46A1E6, #E393FE,#FC9472 100%)">
+                                        <i class="pi pi-car " style="font-size: 2rem"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>Fuel</h6>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-end flex-column">
+                                    <h4>
+                                        $500
+                                    </h4>
+                                    <span>Today</span>
+                                </div>
+                            </div>
+                        </p-card>
+                    </ng-template>
+                </p-virtualScroller>
+            </div>
+
+        </div>
     </div>
-</p-sidebar>
+    <p-toolbar styleClass="p-1 bg-light fixed-bottom">
+        <div class="p-toolbar-group-start">
+
+        </div>
+        <div class="p-toolbar-group-center text-center">
+            <h6><small>&copy;</small>AnbuZ HobbieZ</h6>
+        </div>
+        <div class="p-toolbar-group-end">
+
+        </div>
+
+    </p-toolbar>
+</div>

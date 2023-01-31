@@ -1,0 +1,9 @@
+.grad-back{
+    background: linear-gradient(150deg, #39ef74, #4600f1 100%);
+}
+.transaction-card{
+    width: 100%;
+}
+::ng-deep .p-card:hover{
+    transform: scale(1.05);
+}

@@ -26,6 +26,13 @@ import {DividerModule} from 'primeng/divider';
 import {ChartModule} from 'primeng/chart';
 import {SidebarModule} from 'primeng/sidebar';
 import {ToolbarModule} from 'primeng/toolbar';
+import {AvatarModule} from 'primeng/avatar';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {DataViewModule} from 'primeng/dataview';
+import {VirtualScrollerModule} from 'primeng/virtualscroller';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {MenuModule} from 'primeng/menu';
 @NgModule({
     imports: [
         TableModule,
@@ -54,7 +61,14 @@ import {ToolbarModule} from 'primeng/toolbar';
         DividerModule,
         ChartModule,
         SidebarModule,
-        ToolbarModule
+        ToolbarModule,
+        AvatarModule,
+        ScrollPanelModule,
+        DataViewModule,
+        VirtualScrollerModule,
+        SelectButtonModule,
+        InputTextareaModule,
+        MenuModule
     ],
     exports: [
 
@@ -84,7 +98,14 @@ import {ToolbarModule} from 'primeng/toolbar';
         DividerModule,
         ChartModule,
         SidebarModule,
-        ToolbarModule
+        ToolbarModule,
+        AvatarModule,
+        ScrollPanelModule,
+        DataViewModule,
+        VirtualScrollerModule,
+        SelectButtonModule,
+        InputTextareaModule,
+        MenuModule
     ]
 })
 
