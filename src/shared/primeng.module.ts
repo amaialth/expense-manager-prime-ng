@@ -22,6 +22,13 @@ import {BadgeModule} from 'primeng/badge';
 import {CheckboxModule} from 'primeng/checkbox';
 import {DividerModule} from 'primeng/divider';
 import {PasswordModule} from 'primeng/password';
+import {ToolbarModule} from 'primeng/toolbar';
+import {AvatarModule} from 'primeng/avatar';
+import {MenuModule} from 'primeng/menu';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {VirtualScrollerModule} from 'primeng/virtualscroller';
+import {ChartModule} from 'primeng/chart';
 @NgModule({
     imports: [
         TableModule,
@@ -46,7 +53,14 @@ import {PasswordModule} from 'primeng/password';
         BadgeModule,
         CheckboxModule,
         DividerModule,
-        PasswordModule
+        PasswordModule,
+        ToolbarModule,
+        AvatarModule,
+        MenuModule,
+        SelectButtonModule,
+        InputTextareaModule,
+        VirtualScrollerModule,
+        ChartModule
     ],
     exports: [
 
@@ -72,7 +86,14 @@ import {PasswordModule} from 'primeng/password';
         BadgeModule,
         CheckboxModule,
         DividerModule,
-        PasswordModule
+        PasswordModule,
+        ToolbarModule,
+        AvatarModule,
+        MenuModule,
+        SelectButtonModule,
+        InputTextareaModule,
+        VirtualScrollerModule,
+        ChartModule
     ]
 })
 
